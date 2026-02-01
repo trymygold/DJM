@@ -1,0 +1,141 @@
+/* 1. RESET & BASE STYLES */
+:root {
+    --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    --gold-solid: #D4AF37;
+    --dark-bg: #0f0f0f;
+    --glass: rgba(255, 255, 255, 0.1);
+    --text-light: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Cinzel', 'Playfair Display', serif; /* Use Google Fonts for these */
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    overflow: hidden;
+}
+
+/* 2. SWIPER CONTAINER CUSTOMIZATION */
+.swiper {
+    width: 100%;
+    height: 100vh;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Keeps content at the bottom for thumb-friendliness */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* 3. THE LUXURY OVERLAY (Vignette Effect) */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+}
+
+/* 4. CONTENT STYLING */
+.content-box {
+    position: relative;
+    z-index: 2;
+    padding: 40px 25px;
+    text-align: center;
+    backdrop-filter: blur(5px); /* Adds a modern frosted glass look */
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+h1.magazine-title {
+    font-size: 3.5rem;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 8px;
+    margin-bottom: 5px;
+    font-weight: 900;
+}
+
+h2.article-title {
+    font-size: 1.8rem;
+    color: var(--gold-solid);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+p.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #cccccc;
+    font-family: 'Lato', sans-serif; /* Cleaner body font */
+}
+
+/* 5. THE "MAGIC" TRY-ON BUTTON */
+.btn-try-on {
+    background: var(--gold-gradient);
+    border: none;
+    padding: 16px 45px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px; /* Classic luxury look (less rounded) */
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-try-on:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* 6. PAGE INDICATORS */
+.page-footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 0.7rem;
+    color: var(--gold-solid);
+    letter-spacing: 2px;
+    z-index: 3;
+    opacity: 0.7;
+}
+
+/* 7. CUSTOM SWIPER PAGINATION (GOLD DOTS) */
+.swiper-pagination-bullet {
+    background: white !important;
+    opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--gold-solid) !important;
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+/* 8. RESPONSIVE ADJUSTMENTS */
+@media (max-width: 480px) {
+    h1.magazine-title { font-size: 2.2rem; }
+    h2.article-title { font-size: 1.4rem; }
+    p.description { font-size: 0.9rem; }
+}

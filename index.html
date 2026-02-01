@@ -3,119 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jewels-AI | Digital Magazine</title>
+    <title>Jewels-AI | Interactive Digital Magazine</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,400;1,700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style>
+        /* LUXURY CSS BY GEMINI */
         :root {
-            --gold: #D4AF37;
-            --dark: #1a1a1a;
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --gold-solid: #D4AF37;
+            --dark-bg: #0f0f0f;
+            --text-light: #f5f5f5;
         }
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Serif', 'Georgia', serif; background: var(--dark); }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body, html {
+            height: 100%; width: 100%;
+            font-family: 'Playfair Display', serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
         .swiper { width: 100%; height: 100vh; }
-        
+
         .swiper-slide {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            justify-content: flex-end;
             background-size: cover;
             background-position: center;
-            color: white;
-            text-align: center;
+            position: relative;
         }
 
-        /* Dark overlay for text readability */
+        /* Vignette Overlay */
         .overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
+            background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.85) 100%);
             z-index: 1;
         }
 
-        .content {
+        /* Content Area */
+        .content-box {
             position: relative;
             z-index: 2;
-            padding: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            width: 100%;
         }
 
-        h1 { font-size: 3rem; margin-bottom: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 5px; }
-        p { font-size: 1.2rem; max-width: 80%; margin: 0 auto 20px; line-height: 1.6; }
+        .magazine-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+        }
 
-        .try-on-btn {
-            background: var(--gold);
-            color: black;
+        .article-title {
+            font-size: 1.6rem;
+            color: var(--gold-solid);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .description {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #ddd;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Interactive Button */
+        .btn-try-on {
+            background: var(--gold-gradient);
             border: none;
             padding: 15px 40px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: bold;
+            color: #1a1a1a;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 2px;
             cursor: pointer;
-            border-radius: 50px;
-            transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .try-on-btn:hover { transform: scale(1.1); }
+        .btn-try-on:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
 
-        .page-num { position: absolute; bottom: 20px; font-size: 0.9rem; letter-spacing: 2px; z-index: 3; }
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 20px; right: 20px;
+            z-index: 10;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--gold-solid);
+            color: var(--gold-solid);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .swiper-pagination-bullet-active { background: var(--gold-solid) !important; }
+
+        /* Responsive Mobile */
+        @media (max-width: 480px) {
+            .magazine-title { font-size: 2rem; }
+            .content-box { padding: 40px 20px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="swiper">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80');">
-            <div class="overlay"></div>
-            <div class="content">
-                <h1>JEWELS-AI</h1>
-                <p>The Bridal Edition 2026</p>
-                <button class="try-on-btn">Open Magazine</button>
-            </div>
-            <div class="page-num">COVER</div>
-        </div>
+    <button class="lang-toggle">English / தமிழ்</button>
 
-        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=800&q=80');">
-            <div class="overlay"></div>
-            <div class="content">
-                <h2 style="color: var(--gold);">Temple Traditions</h2>
-                <p>Experience the timeless beauty of 22k Antique Gold Haram sets, handcrafted for the modern queen.</p>
-                <button class="try-on-btn" onclick="alert('Launching AR Try-On...')">Try This Set</button>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070');">
+                <div class="overlay"></div>
+                <div class="content-box">
+                    <h1 class="magazine-title">Jewels-AI</h1>
+                    <h2 class="article-title">The Royal Collection</h2>
+                    <p class="description">Swipe to explore the 2026 Bridal Lookbook. Experience heritage through the lens of AR.</p>
+                    <button class="btn-try-on" data-id="001">Enter Experience</button>
+                </div>
             </div>
-            <div class="page-num">PAGE 02</div>
-        </div>
 
-        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80');">
-            <div class="overlay"></div>
-            <div class="content">
-                <h2 style="color: var(--gold);">The Diamond Solitaire</h2>
-                <p>"A diamond is not just a stone; it is a promise of forever." Explore our certified collection.</p>
-                <button class="try-on-btn" onclick="alert('Launching AR Try-On...')">Try on Hand</button>
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=1920');">
+                <div class="overlay"></div>
+                <div class="content-box">
+                    <h2 class="article-title">Temple Heritage</h2>
+                    <p class="description">Pure 22k gold handcrafted with ancient motifs. A necklace that tells a story of a thousand years.</p>
+                    <button class="btn-try-on" data-id="neck_01" data-name="Temple Haram">Try on Neck</button>
+                </div>
             </div>
-            <div class="page-num">PAGE 03</div>
+
+            <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1920');">
+                <div class="overlay"></div>
+                <div class="content-box">
+                    <h2 class="article-title">Eternal Sparkle</h2>
+                    <p class="description">Solitaire diamonds that capture the light from every angle. Precision cut for the perfect shine.</p>
+                    <button class="btn-try-on" data-id="ring_01" data-name="Solitaire Ring">Try on Finger</button>
+                </div>
+            </div>
+
         </div>
+        <div class="swiper-pagination"></div>
     </div>
-    
-    <div class="swiper-pagination"></div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    const swiper = new Swiper('.swiper', {
-        direction: 'horizontal', // 'vertical' for TikTok style scroll
-        loop: false,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        // Effect for "Page Turn"
-        effect: 'creative',
-        creativeEffect: {
-            prev: { shadow: true, translate: [0, 0, -400] },
-            next: { translate: ['100%', 0, 0] },
-        },
-    });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper with "Page Flip" effect
+        const swiper = new Swiper('.swiper', {
+            effect: 'creative',
+            speed: 1000,
+            creativeEffect: {
+                prev: { shadow: true, translate: ['-20%', 0, -1] },
+                next: { translate: ['100%', 0, 0] },
+            },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            mousewheel: true,
+        });
+
+        // AR Launch Logic
+        document.querySelectorAll('.btn-try-on').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const name = this.getAttribute('data-name') || "Collection";
+                
+                this.innerHTML = "Opening AR...";
+                
+                // Simulated connection to your AR engine
+                setTimeout(() => {
+                    alert("✨ JEWELS-AI MIRROR ✨\nOpening " + name + ".\nPlease allow camera access.");
+                    this.innerHTML = "Try This Set";
+                }, 800);
+            });
+        });
+
+        // Language Toggle Simulation
+        document.querySelector('.lang-toggle').addEventListener('click', function() {
+            alert("Switching to Tamil UI Layout...");
+        });
+    </script>
 </body>
 </html>
