@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewels-AI | Digital Magazine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #1a1a1a;
+        }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Serif', 'Georgia', serif; background: var(--dark); }
+        
+        .swiper { width: 100%; height: 100vh; }
+        
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* Dark overlay for text readability */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: 5px; }
+        p { font-size: 1.2rem; max-width: 80%; margin: 0 auto 20px; line-height: 1.6; }
+
+        .try-on-btn {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .try-on-btn:hover { transform: scale(1.1); }
+
+        .page-num { position: absolute; bottom: 20px; font-size: 0.9rem; letter-spacing: 2px; z-index: 3; }
+    </style>
+</head>
+<body>
+
+<div class="swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80');">
+            <div class="overlay"></div>
+            <div class="content">
+                <h1>JEWELS-AI</h1>
+                <p>The Bridal Edition 2026</p>
+                <button class="try-on-btn">Open Magazine</button>
+            </div>
+            <div class="page-num">COVER</div>
+        </div>
+
+        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=800&q=80');">
+            <div class="overlay"></div>
+            <div class="content">
+                <h2 style="color: var(--gold);">Temple Traditions</h2>
+                <p>Experience the timeless beauty of 22k Antique Gold Haram sets, handcrafted for the modern queen.</p>
+                <button class="try-on-btn" onclick="alert('Launching AR Try-On...')">Try This Set</button>
+            </div>
+            <div class="page-num">PAGE 02</div>
+        </div>
+
+        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80');">
+            <div class="overlay"></div>
+            <div class="content">
+                <h2 style="color: var(--gold);">The Diamond Solitaire</h2>
+                <p>"A diamond is not just a stone; it is a promise of forever." Explore our certified collection.</p>
+                <button class="try-on-btn" onclick="alert('Launching AR Try-On...')">Try on Hand</button>
+            </div>
+            <div class="page-num">PAGE 03</div>
+        </div>
+    </div>
+    
+    <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+        direction: 'horizontal', // 'vertical' for TikTok style scroll
+        loop: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        // Effect for "Page Turn"
+        effect: 'creative',
+        creativeEffect: {
+            prev: { shadow: true, translate: [0, 0, -400] },
+            next: { translate: ['100%', 0, 0] },
+        },
+    });
+</script>
+</body>
+</html>
